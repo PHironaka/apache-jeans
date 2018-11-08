@@ -1,0 +1,125 @@
+/*================ Site Header ================*/
+.site-logo {
+  display: block;
+
+  img {
+    display: block;
+    width: 100%;
+  }
+}
+
+header {
+	display:grid;
+	grid-template-columns: 2fr 1fr;
+	padding:1em 2em;
+
+	.header-items {
+	display:grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	}
+
+	.account-info {
+	
+	ul {
+	display:grid;
+	grid-template-columns: 90px 90px ;
+	justify-content:right;
+	margin:5px;
+	list-style:none;
+	font-size:.75em;
+	text-transform:uppercase;
+	li {
+
+	text-align:right;
+	}
+	}
+	}
+
+	nav ul{
+	display:grid;
+	grid-template-columns: 140px 70px 70px;
+	margin:5px;
+	list-style:none;
+	font-size:.75em;
+
+	a {
+	text-transform:uppercase;
+	}
+	}
+
+	.cart {
+	justify-self:right;
+	}
+
+	.site-nav__submenu {
+    position: absolute;
+    top: 55px;
+    margin: 0;
+    left: 0;
+    padding: 20px 0;
+    display: none;
+    width: 100%;
+    background-color: #ffffffa3;
+    justify-content: center;
+    overflow-x: hidden;
+    z-index: 10;
+    text-align: left;
+    grid-template-columns: 100px 100px 100px 100px;
+
+    .container {
+        grid-template-columns: 1fr; 
+    }
+
+    li {
+        display: block;
+        margin: .5em 0px 1em;
+    font-size: .9em;
+    }
+}
+
+.site-nav__submenu-mobile {
+    position: absolute;
+    top: 55px;
+    margin: 0;
+    left: 0;
+    padding: 20px 0;
+    display: none;
+    width: 100%;
+    background-color: #fff;
+    justify-content: center;
+    overflow-x: hidden;
+    z-index: 10;
+    text-align: left;
+    grid-template-columns: 100px 100px 100px 100px;
+
+    .container {
+        grid-template-columns: 1fr; 
+    }
+
+    li {
+        display: block;
+    font-weight: bold;
+        margin: .5em 0px 1em;
+    font-size: 1.5em;
+    }
+}
+
+
+.submenu-sub {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 2fr));
+    grid-column-gap: 2rem;
+    grid-gap:15px;
+    padding: 0;
+    text-align: left;
+    margin: 15px 0;
+
+    li {
+         display: block;
+    margin: 0;
+    padding: 0;
+    font-weight:normal;
+    font-size: .7em;
+    }
+}
+}
+

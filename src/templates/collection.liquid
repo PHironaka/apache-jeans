@@ -1,0 +1,116 @@
+{% paginate collection.products by 12 %}
+    {% if collection.description != blank %}
+      <div class="rte">
+        {{ collection.description }}
+      </div>
+    {% endif %}
+
+
+
+  <div>
+    {% for product in collection.products %}
+      <div class="product-title">
+  <div>
+
+    {% if product.title == 'A01 Slim Fit' %}
+    <h1>A01 </h1> <span> Slim Fit </span>
+     {% elsif product.title == 'A02 Slim Fit' %}
+    <h1>A02 </h1> <span> Skinny Fit </span>
+        {% endif %}
+
+    </div>
+   
+      
+        <div class="product-description">
+      
+          {{product.description}}
+     
+        </div>
+        </div>
+
+        <div class="product-hero--assets">
+
+        {% if product.featured_image != blank %}
+         <a href="{{product.url}}" >   {{ product.featured_image.src | img_url: '480x480' | img_tag: product.featured_image.alt }} </a>
+          
+        {% endif %}
+
+<video playsinline="" autoplay="" muted="" loop="">
+<source src="https://player.vimeo.com/external/295894510.hd.mp4?s=2514af46ef509f254f3d4c190f72a1c7da9d34ab&amp;profile_id=175" type="video/mp4">
+</video>
+
+        </div>
+
+        <div class="product-variant--thumbnails">
+        <div class="product-variant--price">
+          <img src="https://cdn.shopify.com/s/files/1/0076/9654/7907/products/Image_160_47b096e3-e00d-48f1-a916-a2f72b2bd0fb_grande.png?v=1541385753" /> 
+          <h4> Black Wash</p>
+          <p>$200.00</p>
+          </div>
+           <div class="product-variant--price">
+          <img src="https://cdn.shopify.com/s/files/1/0076/9654/7907/products/Image_160_47b096e3-e00d-48f1-a916-a2f72b2bd0fb_grande.png?v=1541385753" /> 
+          <h4> Black Wash</p>
+          <p>$200.00</p>
+          </div>
+
+            <div class="product-variant--price">
+          <img src="https://cdn.shopify.com/s/files/1/0076/9654/7907/products/Image_160_47b096e3-e00d-48f1-a916-a2f72b2bd0fb_grande.png?v=1541385753" /> 
+          <h4> Black Wash</p>
+          <p>$200.00</p>
+          </div>
+             <div class="product-variant--price">
+          <img src="https://cdn.shopify.com/s/files/1/0076/9654/7907/products/Image_160_47b096e3-e00d-48f1-a916-a2f72b2bd0fb_grande.png?v=1541385753" /> 
+          <h4> Black Wash</p>
+          <p>$200.00</p>
+          </div>
+              <div class="product-variant--price">
+          <img src="https://cdn.shopify.com/s/files/1/0076/9654/7907/products/Image_160_47b096e3-e00d-48f1-a916-a2f72b2bd0fb_grande.png?v=1541385753" /> 
+          <h4> Black Wash</p>
+          <p>$200.00</p>
+          </div>
+           <div class="product-variant--price">
+          <img src="https://cdn.shopify.com/s/files/1/0076/9654/7907/products/Image_160_47b096e3-e00d-48f1-a916-a2f72b2bd0fb_grande.png?v=1541385753" /> 
+          <h4> Black Wash</p>
+          <p>$200.00</p>
+          </div>
+                <div class="product-variant--price">
+          <img src="https://cdn.shopify.com/s/files/1/0076/9654/7907/products/Image_160_47b096e3-e00d-48f1-a916-a2f72b2bd0fb_grande.png?v=1541385753" /> 
+          <h4> Black Wash</p>
+          <p>$200.00</p>
+          </div>
+           <div class="product-variant--price">
+          <img src="https://cdn.shopify.com/s/files/1/0076/9654/7907/products/Image_160_47b096e3-e00d-48f1-a916-a2f72b2bd0fb_grande.png?v=1541385753" /> 
+          <h4> Black Wash</p>
+          <p>$200.00</p>
+          </div> 
+          </div>
+
+      </div>
+
+    {% else %}
+      {% if collection.handle == 'all' and collection.all_vendors.size == 0 and collection.all_types.size == 0 %}
+        {% for i in (1..8) %}
+          <a href="#">
+            {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+            {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+          </a>
+
+          <p>
+            <a href="#">{{ 'homepage.onboarding.product_title' | t }}</a>
+          </p>
+
+          <p>
+            {{ 1999 | money }}
+          </p>
+        {% endfor %}
+      {% else %}
+        <p>{{ 'collections.general.no_matches' | t }}</p>
+      {% endif %}
+
+    {% endfor %}
+  </div>
+
+  {% if paginate.pages > 1 %}
+    {% include 'pagination' %}
+  {% endif %}
+{% endpaginate %}

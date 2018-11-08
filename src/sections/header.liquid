@@ -1,0 +1,120 @@
+<style>
+  {% if section.settings.logo != blank %}
+    .site-header__logo-image {
+      max-width: {{ section.settings.logo_max_width }}px;
+    }
+  {% endif %}
+</style>
+<div data-section-id="{{ section.id }}" data-section-type="header-section">
+ <header role="banner">
+ 
+      <div class="header-items">
+      <a href="/">
+    <svg width="126" viewBox="0 0 196 37" xmlns="http://www.w3.org/2000/svg"><g id="Page-1" fill="none" fill-rule="evenodd"><g id="Apache-Web-Layout" transform="translate(-74 -65)" fill="#000"><g id="Group-14" transform="translate(74 65.22)"><path d="M45.43 17.64h8.87c.68 0 1.37-.1 2.08-.3.71-.18 1.37-.5 1.97-.94a4.85 4.85 0 0 0 1.45-1.74 6 6 0 0 0 .56-2.74c0-1.13-.16-2.07-.49-2.81a4.5 4.5 0 0 0-3.2-2.67 10.3 10.3 0 0 0-2.27-.24h-8.97v11.44zM39.37 1.26h15.27c2.45 0 4.46.35 6 1.06A9.5 9.5 0 0 1 64.25 5a9.08 9.08 0 0 1 1.72 3.49c.3 1.26.46 2.42.46 3.49 0 1.06-.16 2.22-.46 3.46a9.08 9.08 0 0 1-1.72 3.47 9.27 9.27 0 0 1-3.6 2.64 14.8 14.8 0 0 1-6 1.04h-9.21v13.29h-6.06V1.26z" id="Fill-4"></path><path d="M75.8 22.1h10.57L81.2 7.22h-.15L75.81 22.1zm2.14-20.85h6.45l13.33 34.62h-6.5l-3.25-9.17H74.16l-3.25 9.17h-6.25L77.94 1.25z" id="Fill-6"></path><path d="M124.34 12.26c-.26-1-.62-1.92-1.07-2.76a7.67 7.67 0 0 0-4.24-3.62 9.9 9.9 0 0 0-3.32-.5c-1.84 0-3.43.37-4.77 1.11a9.35 9.35 0 0 0-3.28 2.98 13.43 13.43 0 0 0-1.86 4.24 19.54 19.54 0 0 0 0 9.7c.4 1.58 1.02 3 1.86 4.24a9.35 9.35 0 0 0 3.28 2.98 9.69 9.69 0 0 0 4.77 1.12 7.98 7.98 0 0 0 6.25-2.64 9.12 9.12 0 0 0 1.75-2.9c.42-1.09.7-2.27.82-3.53h5.92a16.39 16.39 0 0 1-1.34 5.67 13.61 13.61 0 0 1-7.64 7.32 15.78 15.78 0 0 1-5.76 1.02c-2.59 0-4.9-.48-6.96-1.43a15.28 15.28 0 0 1-5.2-3.9 17.43 17.43 0 0 1-3.28-5.77 21.38 21.38 0 0 1-1.14-7.03c0-2.46.38-4.78 1.14-6.98.76-2.2 1.85-4.12 3.27-5.77A15.57 15.57 0 0 1 115.71.43c1.94 0 3.76.27 5.48.8 1.71.53 3.22 1.3 4.53 2.33a12.09 12.09 0 0 1 4.68 8.7h-6.06z" id="Fill-8"></path><path id="Fill-10" d="M136.5 1.25h6.06v13.77h15.76V1.25h6.05v34.62h-6.05V20.26h-15.76v15.6h-6.06z"></path><path id="Fill-12" d="M170.43 1.25h24.92V6.5h-18.86v9.06h17.45v4.95h-17.45v10.13h19.2v5.24h-25.26z"></path><path d="M11.4 22.1h10.57L16.78 7.22h-.14L11.4 22.1zm2.13-20.84h6.45l13.33 34.6h-6.5l-3.24-9.16H9.75l-3.24 9.17H.25L13.53 1.26z" id="Fill-3"></path></g></g></g></svg>
+    </a>
+
+<nav role="navigation">
+    <ul class="site-nav">
+    {% for link in linklists.main-menu.links %}
+    {% assign child_list_handle = link.title | handle %}
+    {% if linklists[child_list_handle] and linklists[child_list_handle].links.size > 0 %}
+    <li class="site-nav--has-submenu{% if link.active %} site-nav--active{% endif %}">
+      {{ link.title | link_to: link.url }}
+       <ul class="site-nav__submenu">
+       <div class="container">
+
+        {% for child_link in linklists[child_list_handle].links %}
+        {% assign grand_child_list_handle = child_link.title | handle %}
+        {% if linklists[grand_child_list_handle] and linklists[grand_child_list_handle].links.size > 0 %}
+         <li {% if childlink.active %}class="site-nav--active"{% endif %}>
+          {{ child_link.title | link_to: child_link.url }}
+          <ul class="submenu-sub">
+            {% for grand_child_link in linklists[grand_child_list_handle].links %}
+            <li>
+              {{ grand_child_link.title | link_to: grand_child_link.url }}
+            </li>
+            {% endfor %}
+          </ul>
+        </li>
+        {% else %}
+        <li>
+          {{ child_link.title | link_to: child_link.url }}
+        </li>
+        {% endif %}
+        {% endfor %}    
+        </div>    
+      </ul>
+    </li>
+    {% else %}
+    <li>
+      {{ link.title | link_to: link.url }}
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+</nav>
+
+      </div>
+   
+<div class="account-info">
+   
+
+    {% if shop.customer_accounts_enabled %}
+      <ul>
+        {% if customer %}
+          <li>
+            {% if customer.first_name != blank %}
+              {% capture first_name %}<a href="/account">{{ customer.first_name }}</a>{% endcapture %}
+              {{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}
+            {% else %}
+              <a href="/account">{{ 'layout.customer.account' | t }}</a>
+            {% endif %}
+          </li>
+          <li>
+            {{ 'layout.customer.log_out' | t | customer_logout_link }}
+          </li>
+        {% else %}
+          <li>
+            {{ 'layout.customer.log_in' | t | customer_login_link }}
+          </li>
+         
+        {% endif %}
+      
+    {% endif %}
+     <a class="cart" href="/cart">
+      {{ 'layout.cart.title' | t }}
+      ({{ cart.item_count }})
+    </a></ul>
+</div>
+
+  </header>
+</div>
+
+{% schema %}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo image"
+      },
+      {
+        "type": "range",
+        "id": "logo_max_width",
+        "min": 50,
+        "max": 450,
+        "step": 10,
+        "unit": "px",
+        "label": "Custom logo width",
+        "default": 250
+      },
+      {
+        "type": "link_list",
+        "id": "main_linklist",
+        "label": "Menu",
+        "default": "main-menu"
+      }
+    ]
+  }
+{% endschema %}

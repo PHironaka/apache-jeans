@@ -1,0 +1,25 @@
+<div class="static-page--container {% if page.title == 'Stockists' %} {% else %} pages {% endif %} ">
+<aside>
+<h2> {{ page.title }} </h2>
+
+{% if page.title == 'Stockists' %}
+<ul>
+<li>
+  <a class="stockists-location countryfilter-us">United States</a>
+</li> 
+<li>
+  <a class=" stockists-location  countryfilter-intl" >International</a>
+</li> 
+<li>
+  <a class=" stockists-location countryfilter-online" >Online</a>
+</li> 
+ </ul>
+{% endif %}
+
+</aside>
+
+<div class="static-page--content">
+  {{ page.content }}
+</div></div>
+
+
